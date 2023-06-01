@@ -1,0 +1,11 @@
+flask-sqlalchemy
+flask-smorest
+Flask-Migrate
+requests
+flask-migrate
+flask-cors
+flask-jwt-extended
+quart_cors
+asyncio
+rq
+redis
