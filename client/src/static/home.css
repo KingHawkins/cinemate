@@ -1,102 +1,83 @@
-.hero {
-	/*margin-top: -24px;
-	height: 65vh;
-	width: 100vw;
-	position: relative;
-	background: url('https://image.tmdb.org/t/p/original/n8ZpMwYT02XjpQHpSxn1eJw5Zpz.jpg') center top/cover;
-	background-repeat: no-repeat;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;*/
-
+.hero h1 {
+  font-size: 30px;
+  color: purple;
+  margin-left: 10%;
 }
 
-.hero h1{
-	font-size: 20px;
-	color: purple;
-	margin-left: 10%;
-}
-.popular{
-	position: relative;
-	width: 100%;
+.popular {
+  position: relative;
+  width: 100%;
 }
 
-.popular h3{
-	position: absolute;
-	top: -40px;
-	left: 100px;
+.popular h3 {
+  position: absolute;
+  top: -40px;
+  left: 100px;
 }
 
 .popular .description {
-	position: absolute;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	top: -50px;
-        left: 100px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: -50px;
+  left: 100px;
 }
 
 p input {
-	border: 2px solid red;
-	padding: 8px;
-	border-radius: 20px;
-	width: 400px;
-	
-}
-.home-container{
-	display: flex;
-	margin: 0;
-	margin-top: 10%;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
+  border: 2px solid red;
+  padding: 8px;
+  border-radius: 20px;
+  width: 400px;
 }
 
-.home-container .movies{
-    font-family: ubuntu;
-    text-align: center;
-    font-weight: 700;
-    font-size:small;
-    margin: 1%;
-    width: 200px;
-    background-color: var(--primary-color);
-    height: 300px;
-    border: 2px solid;
-    border: none;
+.home-container {
+  display: flex;
+  margin: 3%;
+  margin-top: 10%;
+  justify-content: center;
+  align-items: center;
+  overflow-x: auto;
+  box-sizing: content-box;
 }
 
-.home-container img{
-    height: 85%;
-    width: 100%;
-    padding-bottom: 5px;
+.home-container .movies {
+  font-family: ubuntu;
+  text-align: center;
+  font-weight: 700;
+  font-size: small;
+  margin: 1%;
+  width: 200px;
+  background-color: purple;
+  height: 300px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
 }
 
-.home-container .movies a{
-	color: white;
+.home-container img {
+  height: 85%;
+  width: 100%;
+  padding-bottom: 5px;
 }
-@media only screen and (max-width: 540px){
-	
-	.home-container{
-	       flex-wrap: no-wrap;
-	       overflow: hidden;
-	       height: 155px;
-        }
-	.home-container .movies{
-		font-size: xx-small;
-		height: 150px;
-		width: 100px;
-		overflow: hidden;
-	}
-	.home-container img{
-		padding-bottom: 0;
-	}
 
+.home-container .movies a {
+  color: white;
+  text-decoration: none;
 }
-@media only screen and (min-width: 541px) and (max-width: 920px){
-	.home-container{
-		display: flex;
-		height: 300px;
-		overflow: hidden;
-	}
+
+@media only screen and (max-width: 540px) {
+
+  .home-container .movies {
+    font-size: xx-small;
+    height: 150px;
+    width: 100px;
+    overflow: hidden;
+  }
+
+  .home-container img {
+    padding-bottom: 0;
+  }
 }
+

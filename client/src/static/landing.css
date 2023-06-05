@@ -1,0 +1,127 @@
+.landing {
+  text-align: center;
+  /*padding: 20px;*/
+  margin: 0;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  /*margin: 0;*/
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+nav ul li a {
+  color: #333;
+  text-decoration: none;
+}
+
+.hero {
+  margin-top: 100px;
+}
+
+.hero h1 {
+  font-size: 36px;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+.btn-explore {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-explore:hover {
+  background-color: #555;
+}
+
+.features {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+  animation: slide-up 1s ease;
+}
+
+.feature {
+  width: 300px;
+  margin: 0 20px;
+  animation: scale-in 0.5s ease forwards;
+  /*opacity: 0;*/
+}
+
+.feature i {
+  font-size: 48px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.feature h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.feature p {
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 24px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .feature {
+    width: 100%;
+    margin: 20px 0;
+  }
+}
+

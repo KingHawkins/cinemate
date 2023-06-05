@@ -16,7 +16,6 @@ export default function Login()  {
      const username = document.querySelector('#username').value
      const password = document.querySelector('#password').value
      setData({username, password})
-     console.log(data)
   }
   const postData = (item) => {
      fetch('http://127.0.0.1:5000/api/login', {
@@ -26,15 +25,12 @@ export default function Login()  {
 	     },
 	     body: JSON.stringify(item)
 	  }).then(response => {
-		 if (response.status === 401){
-		    document.querySelector('#username').style['border-color'] = 'red'
+		 if (response.status === 200){
+		    return response.json()
 		 }
-		 return response.json()
 	  })
-	  .then(jsondata => console.log(jsondata))
-          .catch(err => {
-		  console.error(err.status)
-	 })
+	  .then(jsondata => localStorage.setItem('access_token', jsondata.access_token))
+          .catch(err => console.error(err))
   }
   useEffect(() => {
 	  postData(data)
@@ -55,12 +51,6 @@ export default function Login()  {
            </div>
            <button type="submit">Login</button>
         </form>
-	  {/*<p>Login to your account</p>
-	  <div className="images">
-          <img src={ social } alt=""/>
-          <img src={ apple } alt=""/>
-          <img src={ github } alt=""/>
-        </div>*/}
         <div className="link">
           <p>Dont have an account? <Link to="/register">Create an Account</Link></p>
         </div>

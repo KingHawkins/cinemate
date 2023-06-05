@@ -120,7 +120,7 @@ class Password(MethodView):
 class Info(MethodView):
     @user_view.arguments(AuthorizationHeaderSchema)
     @jwt_required()
-    def post(self, data):
+    def get(self, data):
         current_user_id = get_jwt_identity()
         user = db.session.query(User).filter(User.id == current_user_id).first()
         return jsonify(user.to_dict()), 200

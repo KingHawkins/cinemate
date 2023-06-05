@@ -20,3 +20,12 @@ class LoginView(Schema):
 
 class PasswordView(Schema):
     password = fields.Str(required=True)
+
+class TicketView(Schema):
+    id = fields.Str(required=True)
+    movie_id = fields.Str(required=True)
+    seat = fields.Str(required=True)
+    price = fields.Int(required=True)
+
+class TicketId(Schema):
+    id = fields.Str(required=True)

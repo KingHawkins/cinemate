@@ -15,6 +15,7 @@ from flask_jwt_extended import JWTManager
 from datetime import datetime
 from server.api.resources.movie import app_view
 from server.api.resources.user import user_view
+from server.api.resources.ticket import ticket_view
 from redis import Redis
 from rq import Queue
 import os
@@ -32,7 +33,7 @@ app.config["OPENAPI_VERSION"] = "3.0.3"
 app.config["OPENAPI_URL_PREFIX"] = "/api"
 app.config["OPENAPI_SWAGGER_UI_PATH"] = "/swagger-ui"
 app.config["OPENAPI_SWAGGER_UI_URL"] = "https://cdn.jsdelivr.net/npm/swagger-ui-dist/"
-app.config['JWT_SECRET_KEY'] = os.random(24)
+app.config['JWT_SECRET_KEY'] = os.urandom(24)
 app.config["REDIS_HOST"] = "localhost"
 app.config["REDIS_PORT"] = 6379
 app.config['TEMPLATES_AUTO_RELOAD'] = True
@@ -47,6 +48,7 @@ CORS(app, resources={r"/api/*": {"origins": "*"}})
 api = Api(app)
 
 api.register_blueprint(app_view, url_prefix="/api")
+api.register_blueprint(ticket_view, url_prefix="/api")
 api.register_blueprint(user_view, url_prefix="/api")
 migrate = Migrate(app, db)
 

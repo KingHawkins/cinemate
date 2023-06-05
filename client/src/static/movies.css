@@ -13,7 +13,7 @@ a {
 }
 
 .movies-container {
-	background-color: var(--secondary-color);
+	/*background-color: var(--secondary-color);*/
 	margin: 0;
 }
 .movies-container{

@@ -61,9 +61,8 @@ export default function SeatMap () {
   }, [count]);
   return (
     <div className='body'>
-      <marquee>Book Now</marquee>
       <div className='seatmap-container'>
-        <label>Pick a Movie:</label>
+        <label style={{ color: '#fff'}}>Pick a Movie:</label>
         <select id='pick-movie'>
           <option value='10' />
           <option value='12' />
@@ -170,8 +169,9 @@ export default function SeatMap () {
       </div>
       <p className='text'>Selected&nbsp;<span className='count'>{count}</span>&nbsp;for a price of $:&nbsp;<span className='total'>{price}</span></p>
 		<button style={{
-			backgroundColor: '#228B22',
-			marginTop: '15px'
+			backgroundColor: '#6feaf6',
+			marginTop: '15px',
+			borderRadius: '5px'
 		}}>Go to Payment</button>
     </div>
   );
