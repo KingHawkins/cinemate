@@ -5,8 +5,5 @@ requests
 flask-migrate
 flask-cors
 flask-jwt-extended
-quart_cors
-asyncio
 rq
 redis
-pythonrestsdk

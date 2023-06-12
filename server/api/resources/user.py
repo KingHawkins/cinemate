@@ -62,7 +62,7 @@ class Login(MethodView):
 
         user = db.session.query(User).filter(User.username == username).first()
         if user and bcrypt.checkpw(password.encode('utf-8'), user.password):
-            access_token = create_access_token(identity=user.id, expires_delta=datetime.timedelta(minutes=15))
+            access_token = create_access_token(identity=user.id, expires_delta=datetime.timedelta(minutes=60))
             return jsonify(access_token=access_token), 200
         return jsonify(message="Invalid username or password"), 401
 

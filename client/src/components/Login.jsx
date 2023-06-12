@@ -26,9 +26,9 @@ export default function Login()  {
 	     },
 	     body: JSON.stringify(item)
 	  }).then(response => {
-		 if (response.status === 200){
-		    navigate('/')
-		    return response.json()
+		 if (response.status === 200) {
+			 navigate('/');
+			 return response.json();
 		 }
 	  })
 	  .then(jsondata => {
@@ -42,13 +42,16 @@ export default function Login()  {
   }, [data])
   return (
     <div className="login">
+	 <div id='alert' className='alert hidden'>Invalid credentials
+        <div id='progress-bar' className='progress-bar' />
+      </div>
         <div className="cinema">
           <img src={ logo } alt=""/>
         </div>
 	<form onSubmit={getData} id="login">
             <div>
                 <img src={ user } width="12px" alt=""/>
-                <input type="text" name="username" id="username" placeholder="Enter your username"/>
+                <input type="text" name="username" id="username" placeholder="Enter your username" required/>
             </div>
            <div>
                <img src={ lock } width="12px"alt=""/>

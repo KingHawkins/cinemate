@@ -2,6 +2,9 @@
     --primary-color: #22254b;
     --secondary-color: #373b69;
     --color: #7378c5;
+    --pr-color: #FF0000; /* Base red color */
+  --darker-red: #800000; /* Darker red color */
+  --lighter-red: #FF6666; /* Lighter red color */
 }
 
 
@@ -34,17 +37,18 @@ p{
 .alert {
   position: fixed;
   top: 10px;
-  padding: 10px;
+  text-align: center;
+  padding: 20px;
   padding-bottom: 2.5rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   border-radius: 5px;
   margin-bottom: 10px;
-  font-size: 1rem;
-  /*background-color: #D4EDDA;*/
+  font-size: 1.3rem;
+  background-color: /*var(--lighter-red)*/ #fff;
   /*color: #155724;*/
-  color: var(--primary-color);
-  border: 1px solid /*#C3E6CB*/ var(--color);
+  color: var(--darker-red);
+  border: 1px solid /*#C3E6CB*/ var(--pr-color);
 }
 
 .hidden {
@@ -58,9 +62,9 @@ p{
   width: 100%;
   height: 5px;
   /*background-color: #155724;*/
-  background-color: var(--color);
+  background-color: var(--pr-color);
   /*background-color: var(--color);*/
-  animation: decrease-width 4s linear forwards;
+  animation: decrease-width 3s linear forwards;
 }
 
 @keyframes decrease-width {

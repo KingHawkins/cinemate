@@ -26,13 +26,8 @@ export default function Register () {
 	      body: JSON.stringify(item)
 	   }).then(response => {
       		if (response.status === 200) {
-        	   const alertElement = document.querySelector('.alert');
-	           alertElement.classList.remove('hidden');
-		   setTimeout(() => {
-			   alertElement.classList.add('hidden');
-			   navigate('/login');
-		   }, 4000);
-                 }
+        	   navigate('/login');
+		 }
 		 return response.json();
 	   }).then(jsondata => console.log(jsondata));
   };
@@ -43,19 +38,19 @@ export default function Register () {
   return (
 
     <div className='container'>
-      <div id='alert' class='alert hidden'>Account created successfully
-        <div id='progress-bar' class='progress-bar' />
+      <div id='alert' className='alert hidden'>Username or email exists
+        <div id='progress-bar' className='progress-bar' />
       </div>
       <p>Create your Account</p>
       <form onSubmit={submitForm} id='form'>
         <div>
           <img src={user} width='12px' alt='' />
-          <input type='text' name='username' id='username' placeholder='Enter your username' />
+          <input type='text' name='username' id='username' placeholder='Enter your username' required/>
         </div>
 
         <div>
           <img src={apple} width='12px' alt='' />
-          <input type='email' name='email' id='email' placeholder='Enter your email' />
+          <input type='email' name='email' id='email' placeholder='Enter your email' required/>
         </div>
         <div>
           <img src={lock} width='12px' alt='' />
@@ -63,7 +58,7 @@ export default function Register () {
         </div>
         <div>
           <img src={phone} width='12px' alt='' />
-          <input type='text' name='contact' id='contact' placeholder='Enter your phone number' />
+          <input type='text' name='contact' id='contact' placeholder='Enter your phone number' required/>
         </div>
         <button type='submit'>Register</button>
       </form>
