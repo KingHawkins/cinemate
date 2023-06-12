@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="font-family: ubuntu; position: relative; max-width: 600px; margin: 0 auto; padding: 20px; margin-top: 12px; border: 1px solid #ccc; margin-bottom: 2.8rem; border-radius: 4px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); box-sizing: border-box;">
+        <div style=" position: absolute; display: flex; gap: 75%; align-items: center;">
+		<img src="https://www.bobhawkins.tech/hbnb_static/logo.png" style="width: 10%; height: 10%;">
+		<div style=" width: 100%; text-align: right;">
+		<span style="font-family: 'TicketFont', Arial, sans-serif; font-weight: bolder; text-transform: uppercase;">Created:</span>
+                <p style="margin-top: 0;">{{ created }}</p>
+		</div>
+        </div>
+        <div style="width: 100%; display: flex; align-items: center; justify-content: center; position: absolute; flex-wrap: wrap; gap: 3%; margin: 0;">
+            <div style="text-align: center;  margin: 10px;">
+                <span style="font-family: 'TicketFont', Arial, sans-serif; font-weight: bolder; text-transform: uppercase;">Transcation ID:</span>
+                <p style="margin-top: 0;">{{ ticket.booking_id }}</p>
+            </div>
+            <div style="text-align: center;  margin: 10px;">
+                <span style="font-family: 'TicketFont', Arial, sans-serif; font-weight: bolder; text-transform: uppercase;">Movie:</span>
+                <p style="margin-top: 0;">{{ ticket.movie }}</p>
+            </div>
+            <div style="text: center; margin: 10px;">
+                <span style="font-family: 'TicketFont', Arial, sans-serif; font-weight: bolder; text-transform: uppercase;">Cinema:</span>
+                <p style="margin-top: 0;">{{ ticket.cinema }}</p>
+            </div>
+            <div style="text: center;  margin: 10px;">
+                <span style="font-family: 'TicketFont', Arial, sans-serif; font-weight: bolder; text-transform: uppercase;">Streaming:</span>
+                <p style="margin-top: 0;">{{ ticket.release_date|safe }}</p>
+            </div>
+            <div style="text: center;margin: 10px;">
+                <span style="font-family: 'TicketFont', Arial, sans-serif; font-weight: bolder; text-transform: uppercase;">Price:</span>
+                <p style="margin-top: 0;">{{ ticket.price }}</p>
+            </div>
+            <div style="text: center; margin: 10px;">
+                <span style="font-family: 'TicketFont', Arial, sans-serif; font-weight: bolder; text-transform: uppercase;">Seat Number:</span>
+                <p style="margin-top: 0;">{{ ticket.seat_number }}</p>
+            </div>
+        </div>
+        <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+            <img src="data:image/png;base64,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">
+        </div>
+    </div>
+</body>
+</html>

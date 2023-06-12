@@ -4,7 +4,6 @@ from database.models.movie import Movie
 from database.models.ticket import Ticket
 from database.models.showtime import ShowTime
 from database.models.booking import Booking
-from database.models.theater import Theater
 from dotenv import load_dotenv
 from flask import Flask, jsonify
 from flask_cors import CORS
@@ -15,6 +14,7 @@ from flask_jwt_extended import JWTManager
 from datetime import datetime
 from server.api.resources.movie import app_view
 from server.api.resources.user import user_view
+from server.api.resources.ticket import ticket_view
 from redis import Redis
 from rq import Queue
 import os
@@ -32,7 +32,7 @@ app.config["OPENAPI_VERSION"] = "3.0.3"
 app.config["OPENAPI_URL_PREFIX"] = "/api"
 app.config["OPENAPI_SWAGGER_UI_PATH"] = "/swagger-ui"
 app.config["OPENAPI_SWAGGER_UI_URL"] = "https://cdn.jsdelivr.net/npm/swagger-ui-dist/"
-app.config['JWT_SECRET_KEY'] = os.random(24)
+app.config['JWT_SECRET_KEY'] = os.urandom(24)
 app.config["REDIS_HOST"] = "localhost"
 app.config["REDIS_PORT"] = 6379
 app.config['TEMPLATES_AUTO_RELOAD'] = True
@@ -40,6 +40,7 @@ template_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templat
 app.template_folder = template_dir
 
 db.init_app(app)
+migrate = Migrate(app, db)
 mail.init_app(app)
 redis_client = Redis(host=app.config['REDIS_HOST'], port=app.config['REDIS_PORT'])
 app.queue = Queue("emails", connection=redis_client)
@@ -47,14 +48,12 @@ CORS(app, resources={r"/api/*": {"origins": "*"}})
 api = Api(app)
 
 api.register_blueprint(app_view, url_prefix="/api")
+api.register_blueprint(ticket_view, url_prefix="/api")
 api.register_blueprint(user_view, url_prefix="/api")
 migrate = Migrate(app, db)
 
 jwt = JWTManager(app)
 load_dotenv()
-
-#with app.app_context():
-#    db.create_all()
 
 
 def store_movies():
@@ -82,10 +81,13 @@ def store_movies():
 def check_if_token_in_blocklist(jwt_header, jwt_payload):
     return jwt_payload["jti"] in redis_client
 
-@jwt.revoked_token_loader
-def revoked_token(jwt_header, jwt_payload):
+@jwt.expired_token_loader
+def expired_token(jwt_header, jwt_payload):
     return jsonify(message="The token is expired"), 401
 
+@jwt.revoked_token_loader
+def revoked_token(jwt_header, jwt_payload):
+    return jsonify(description="The token has been revoked", error="Token revoked"), 401
 
 @app.teardown_appcontext
 def close(exception):

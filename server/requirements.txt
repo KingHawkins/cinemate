@@ -9,3 +9,4 @@ quart_cors
 asyncio
 rq
 redis
+pythonrestsdk

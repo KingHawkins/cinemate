@@ -6,7 +6,6 @@ from flask.views import MethodView
 from flask_mail import Message
 from server.schemas import RegisterView, AuthorizationHeaderSchema, PasswordView, LoginView
 from flask import jsonify, request, current_app, render_template
-import asyncio
 import bcrypt
 import os
 import requests
@@ -18,8 +17,6 @@ user_view = Blueprint("users", __name__, description='Operations on movies')
 
 
 def send_email(**kwargs):
-    #msg = Message("Successfully signed up to Cinemate", recipients=[kwargs['email']])
-    #msg.body = f"Hi {kwargs['username']}! You have successfully signed up to Cinemate"
     template = render_template("register.html", username=kwargs['username'])
     msg = Message("Successfully signed up to Cinemate", recipients=[kwargs['email']], html=template)
 
@@ -60,12 +57,12 @@ class Login(MethodView):
     @user_view.arguments(LoginView)
     def post(self, data):
         username = request.json.get("username")
-        email = request.json.get("email")
+        #email = request.json.get("email")
         password = request.json.get("password")
 
         user = db.session.query(User).filter(User.username == username).first()
         if user and bcrypt.checkpw(password.encode('utf-8'), user.password):
-            access_token = create_access_token(identity=user.id)
+            access_token = create_access_token(identity=user.id, expires_delta=datetime.timedelta(minutes=15))
             return jsonify(access_token=access_token), 200
         return jsonify(message="Invalid username or password"), 401
 
@@ -75,8 +72,6 @@ class Signout(MethodView):
     @user_view.arguments(AuthorizationHeaderSchema)
     @jwt_required()
     def post(self, data):
-        auth_header = request.headers.get("Authorization")
-        token = auth_header.replace("Bearer", "").strip()
 
         jti = get_jwt()["jti"]
         redis_client.set(jti, json.dumps({'blacklisted': True}))
@@ -116,11 +111,11 @@ class Password(MethodView):
         db.session.commit()
         return jsonify(message="password updated successfully"), 200
 
-@user_view.route("/my-info", strict_slashes=False)
+@user_view.route("/info", strict_slashes=False)
 class Info(MethodView):
     @user_view.arguments(AuthorizationHeaderSchema)
     @jwt_required()
-    def post(self, data):
+    def get(self, data):
         current_user_id = get_jwt_identity()
         user = db.session.query(User).filter(User.id == current_user_id).first()
         return jsonify(user.to_dict()), 200

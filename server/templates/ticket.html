@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+		box-sizing: border-box;
+	}
+	:root{
+    --primary-color: #22254b;
+    --secondary-color: #373b69;
+    --color: #7378c5;
+}
+
+.ticket {
+  font-family: ubuntu;
+  font-size: 85%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  margin-top: 12px;
+  border: 1px solid #ccc;
+  margin-bottom: 2.8rem;
+  border-radius: 4px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+}
+
+.ticket-header{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+}
+.ticket-header p{
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.ticket img{
+	width: 10%;
+	height: 10%;
+}
+.ticket h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.ticket-info {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.qrcode {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*flex: 0 0 128px;*/
+  /*margin-right: 20px;*/
+}
+
+.distributions{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: 3%;
+	width: 115px;
+	text-align: center;
+	box-sizing: border-box;
+}
+
+.distributions span{
+	font-family: 'TicketFont', Arial, sans-serif;
+	font-weight: bolder;
+	text-transform: uppercase;
+
+}
+.distributions p{
+	margin-top: 7%;
+	font-weight: 4%;
+}
+.distributions:nth-child(2) p, .distributions:nth-child(3) p{
+	margin-top: 3%;
+}
+.details {
+  /*flex: 1 1 auto;*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.details p {
+  flex-basis: 50%;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 480px) {
+  .qrcode {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .details p {
+    flex-basis: 100%;
+  }
+}
+
+    </style>
+</head>
+<body>
+<div class='ticket'>
+        <div class='ticket-header'>
+		<img src='data:image/png;base64, {{ embed_image }}' />
+	  <p style="text-transform: uppercase;"><strong>date generated: </strong>{{ created }}</p>
+        </div>
+        <div class='ticket-info'>
+          <div class='details'>
+            <div class='distributions'>
+              <span>Transcation ID:</span>
+	      <p>{{ ticket.booking_id }}</p>
+            </div>
+            <div class='distributions'>
+              <span>Movie:</span>
+	      <p>{{ ticket.movie }}</p>
+            </div>
+            <div class='distributions'>
+              <span>Cinema:</span>
+	      <p>{{ ticket.cinema }}</p>
+            </div>
+            <div class='distributions'>
+              <span>Streaming:</span>
+	      <p>{{ ticket.release_date }}</p>
+            </div>
+            <div class='distributions'>
+              <span>Price:</span>
+	      <p>{{ ticket.price }}</p>
+            </div>
+            <div class='distributions'>
+              <span>Seat Number:</span>
+	      <p>{{ ticket.seat_number }}</p>
+            </div>
+          </div>
+          <div class='qrcode'>
+		  <img src="data:image/png;base64, {{ qrcode }}">
+          </div>
+        </div>
+      </div>    
+</body>
+</html>

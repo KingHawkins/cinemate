@@ -15,14 +15,6 @@ class MovieView(MethodView):
         if movie:
             return jsonify(movie.to_dict()), 200
         abort(404)
-    
-    def delete(self, movie_id):
-        movie = db.session.query(Movie).filter(Movie.id == movie_id).first()
-        if movie:
-            db.session.delete(movie)
-            db.session.commit()
-            return jsonify(message="Movie deleted successfully"), 204
-        abort(404)
         
     @app_view.arguments(MoviePutSchema)
     def put(self, data, movie_id):
