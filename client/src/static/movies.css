@@ -1,0 +1,131 @@
+:root{
+    --primary-color: #22254b;
+    --secondary-color: #373b69;
+}
+
+/*body {
+  overflow: hidden;
+  overflow-y: scroll;
+}*/
+
+a {
+    text-decoration: none;
+}
+
+.movies-container {
+	/*background-color: var(--secondary-color);*/
+	margin: 0;
+}
+.movies-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2%;
+    /*margin: 1%;*/
+}
+
+header{
+    margin: 0;
+    height: 12vh;
+    display: flex;
+    background-repeat: no-repeat;
+    align-items: center;
+    background-color: var(--primary-color);
+    visibility: transparent;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    justify-content: center;
+}
+
+.hero-overlay{
+    position: absolute;
+    /*margin-top: -5px;*/
+    background-color: rgba(34, 37, 75, 0.5);
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+}
+header input{
+    width: 75%;
+    padding: 1.2%;
+    border: 1.2px solid;
+    color: #7378c5;
+    border-radius: 100px;
+    border-color: #7378c5;
+    background-color: var(--primary-color);
+    z-index: 2;
+}
+
+header input::placeholder{
+    color: #7378c5; 
+}
+header input:focus{
+    outline: none;
+ }
+
+header .nav-bar {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    right: 80px;
+    color: white;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+header .nav-bar p {
+    background-color: var(--primary-color);
+    border-radius: 15px;
+    padding: 12px;
+    /*border: 1px solid none;*/
+    /*border-color: orange;*/
+}
+
+header .nav-bar p:hover{
+	border-bottom: 2px solid var(--secondary-color);
+}
+header .nav-bar p a {
+    color: white;
+    font-weight: 500;
+}
+
+
+
+.movies-container .movies{
+    font-family: ubuntu;
+    text-align: center;
+    font-weight: 700;
+    font-size:small;
+    margin: 1%;
+    width: 200px;
+    background-color: var(--primary-color);
+    height: 300px;
+    border: 2px solid;
+    border: none;
+}
+
+.movies-container img{
+    height: 85%;
+    width: 100%;
+    padding-bottom: 5px;
+}
+
+.movies-container .movies a{
+	color: white;
+}
+@media only screen and (max-width: 540px){
+	.movies-container .movies{
+		font-size: xx-small;
+		height: 150px;
+		width: 100px;
+		overflow: hidden;
+	}
+	.movies-container img{
+		padding-bottom: 0;
+	}
+
+}

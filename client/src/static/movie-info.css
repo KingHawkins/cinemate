@@ -1,0 +1,150 @@
+:root{
+    --primary-color: #22254b;
+    --secondary-color: #373b69;
+    --color: #7378c5;
+}
+body::-webkit-scrollbar {
+	width: 4px;
+}
+
+body::-webkit-scrollbar-thumb{
+	background: var(--color);
+	border-radius: 2px;
+}
+.movie-info .movie .movie-overlay{
+    position: absolute;
+   /* background-color: rgba(34, 37, 75, 0.75);*/
+    background-color: rgba(252, 3, 78, 0.6);
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+
+}
+.movie-info{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+}
+
+.movie-info .movie{
+	margin-left: 0;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+	/*flex-wrap: wrap;*/
+        background-repeat: no-repeat;
+        align-items: center;
+        visibility: transparent;
+        background-size: cover;
+        background-position: center;
+        gap: 6px;
+	box-sizing: border-box;
+	z-index: 2;
+	/*position: relative;*/
+        justify-content: center;
+}
+.movie-info .movie img{
+	margin-left: 3%;
+	z-index: 2;
+	position: relative;
+	width: 25%;
+	border-radius: 6px;
+}
+
+.movie-info .movie img{
+	--webkit-display: none;
+}
+.movie-info .movie .description p{
+	z-index: 2;
+	color: white;
+}
+.movie-info .movie .description{
+	text-align: center;
+	z-index: 3;
+}
+
+.movie-info .movie .description button{
+	left: 0;
+}
+
+.modal-close{
+	text-align: right;
+	background: 2px solid;
+	background-color: #fff;
+	width: 75%;
+	height: 5%;
+}
+.modal-close i{
+	position: relative;
+	margin: 1%;
+}
+.modal{
+	position: fixed;
+        /*width: 75%;*/
+	width: 100vw;
+        z-index: 3;
+	margin: 0;
+        transform: scale(0);
+        /*height: 75%;*/
+	height: 100vh;
+        top: 10%;
+        left: 12%;
+	box-sizing: border-box;
+}
+
+iframe{
+	/*position: absolute;*/
+	width: 75%;
+	height: 75%;
+	z-index: 3;
+	/*transform: scale(0);*/
+}
+/*iframe{
+	position: absolute;
+	width: 75%;
+	z-index: 3;
+	transform: scale(0);
+	height: 75%;
+	top: 10%;
+	left: 12%;
+}*/
+
+
+@media only screen and (max-width: 540px){
+	.modal{
+		left: 0;
+	}
+	.modal-close{
+		width: 100%;
+	}
+	iframe{
+		width: 100%;
+		height: 45%;
+		left: 0;
+	}
+	.movie-info .movie {
+		flex-wrap: wrap;
+		text-align: center;
+		gap: 0px;
+		margin: 0;
+		font-size: x-small;
+		margin-top: -10px;
+	}
+	.movie-info .movie img{
+		width: 200px;
+		margin: -10px;
+
+	}
+	.movie-info .movie .description button{
+		width: 75%;
+	}
+	.movie-info .movie .description{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+	}
+
+}

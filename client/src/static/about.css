@@ -1,0 +1,17 @@
+.about-us {
+    max-width: 75vw;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+
+  .about-us h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .about-us p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
