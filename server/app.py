@@ -18,12 +18,15 @@ from server.api.resources.ticket import ticket_view
 from redis import Redis
 from rq import Queue
 import os
+import psycopg2
 import requests
 
+load_dotenv()
 
 app.config['SQLALCHEMY_DATABASE_URI'] = ('sqlite:///' +
                                          os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          'database.db'))
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://xyreiqbm:dDih5M4WiGDy5JLHRV-FTwrDY8FLabu9@tyke.db.elephantsql.com/xyreiqbm'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['PROPAGATE_EXCEPTIONS'] = True
 app.config['API_TITLE'] = "Cinemate REST API"

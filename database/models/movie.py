@@ -14,5 +14,5 @@ class Movie(BaseModel, db.Model):
     trailer_url = db.Column(db.String(128), nullable=False)
     poster_url = db.Column(db.String(128), nullable=False)
     duration = db.Column(db.String(10), nullable=False)
-    overview = db.Column(db.String(256), nullable=False)
+    overview = db.Column(db.String(1000), nullable=False)
     release_date = db.Column(db.Date, nullable=False)

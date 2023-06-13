@@ -57,10 +57,9 @@ class Login(MethodView):
     @user_view.arguments(LoginView)
     def post(self, data):
         username = request.json.get("username")
-        #email = request.json.get("email")
         password = request.json.get("password")
-
         user = db.session.query(User).filter(User.username == username).first()
+        print(user.password)
         if user and bcrypt.checkpw(password.encode('utf-8'), user.password):
             access_token = create_access_token(identity=user.id, expires_delta=datetime.timedelta(minutes=60))
             return jsonify(access_token=access_token), 200

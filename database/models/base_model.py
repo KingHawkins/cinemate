@@ -16,8 +16,7 @@ class BaseModel:
                     value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
                 if key != "__class__" and key != '_sa_instance_state':
                     if key == 'password':
-                        value = bcrypt.hashpw(value.encode('utf-8'),
-                                              bcrypt.gensalt())
+                        value = bcrypt.hashpw(value.encode("utf-8"), bcrypt.gensalt())
                     setattr(self, key, value)
             if "id" not in kwargs:
                 self.id = str(uuid.uuid4())

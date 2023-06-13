@@ -2,6 +2,10 @@
 
 <p>The Ticket Booking App is a web-based application that enables users to easily book tickets for movies. It provides a user-friendly interface for movie selection, seat reservation, and secure booking.</p>
 
+<video width="500" height="260" controls>
+  <source src="cinemate.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
 <h2>Technologies Used</h2>
 
 <ul>
@@ -46,7 +50,6 @@
      ```
 6. Start redis-server and the rq worker:
     ```bash
-    cd server
     redis-server
     rq worker redis://localhost:6379 emails
     ```

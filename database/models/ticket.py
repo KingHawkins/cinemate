@@ -15,4 +15,4 @@ class Ticket(BaseModel, db.Model):
     price = db.Column(db.Float(precision=2), nullable=False)
     cinema = db.Column(db.String(60), nullable=False)
     movie = db.Column(db.Integer, nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    user_id = db.Column(db.String(60), db.ForeignKey("users.id"), nullable=False)
