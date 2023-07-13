@@ -75,7 +75,7 @@ const PayPalButton = () => {
 	  localStorage.setItem("paypal", data.orderID);
 	  for(const seat of JSON.parse(localStorage.getItem('array'))){
 	  	createTicket(data.orderID, seat);
-		email(data.orderID, seat);
+		//email(data.orderID, seat);
 	  }
           return actions.order.capture().then(onPaymentSuccess);
         }}

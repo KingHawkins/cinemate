@@ -18,14 +18,14 @@ export default function Register () {
     setData({ username, email, password, contact });
   };
   const postData = (item) => {
-    fetch('http://127.0.0.1:5000/api/register', {
+    fetch('http://127.0.0.1:8000/register', {
 	      method: 'POST',
 	      headers: {
       			'Content-Type': 'application/json'
     	      },
 	      body: JSON.stringify(item)
 	   }).then(response => {
-      		if (response.status === 200) {
+      		if (response.status === 201) {
         	   navigate('/login');
 		 }
 		 return response.json();

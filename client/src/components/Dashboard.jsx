@@ -10,7 +10,7 @@ export default function Dashboard () {
   const [tickets, setTicket] = useState([]);
   const fetchUser = () => {
     try {
-      fetch('http://127.0.0.1:5000/api/info', {
+      fetch('http://127.0.0.1:8000/info', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('access_token')}`
         }
@@ -19,7 +19,7 @@ export default function Dashboard () {
     } catch (err) { console.err(err); }
   };
   const Logout = () => {
-    fetch('http://127.0.0.1:5000/api/logout', {
+    fetch('http://127.0.0.1:8000/logout', {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('access_token')}`
@@ -31,7 +31,7 @@ export default function Dashboard () {
     }).then(jsondata => jsondata).catch(err => console.error(err));
   };
   const Signout = () => {
-    fetch('http://127.0.0.1:5000/api/signout', {
+    fetch('http://127.0.0.1:8000/signout', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('access_token')}`
@@ -44,7 +44,7 @@ export default function Dashboard () {
   };
 
   const getData = () => {
-    fetch('http://127.0.0.1:5000/api/tickets', {
+    fetch('http://127.0.0.1:8000/tickets', {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('access_token')}`

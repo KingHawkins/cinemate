@@ -10,12 +10,12 @@ export default function Ticket () {
   const [movie, setMovie] = useState({});
   const [date, setDate] = useState('');
   const fetchMovie = (id) => {
-  	return fetch(`http://127.0.0.1:5000/api/movies/${id}`)
+  	return fetch(`http://127.0.0.1:8000/movies/${id}`)
     		.then(response => response.json())
     		.catch(err => console.error(err));
   };
   const getData = (ticket_id) => {
-    fetch(`http://127.0.0.1:5000/api/tickets/${ticket_id}`, {
+    fetch(`http://127.0.0.1:8000/tickets/${ticket_id}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('access_token')}`
@@ -46,7 +46,7 @@ export default function Ticket () {
       <div className='ticket'>
         <div className='ticket-header'>
           <img src={logo} />
-          <p style={{ textTransform: 'uppercase' }}><strong>date generated: </strong>{date}</p>
+          <p style={{ textTransform: 'uppercase' }}><strong>created: </strong>{date}</p>
         </div>
         <div className='ticket-info'>
           <div className='details'>

@@ -9,7 +9,7 @@ export default function Movie () {
   const [movie, setMovie] = useState([]);
   const fetchMovie = async (id) => {
     try {
-	    const response = await fetch(`http://127.0.0.1:5000/api/movies/${id}`);
+	    const response = await fetch(`http://127.0.0.1:8000/movies/${id}`);
 	    const data = await response.json();
 	    setMovie(data);
     } catch (err) {

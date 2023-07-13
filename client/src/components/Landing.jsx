@@ -6,7 +6,7 @@ import Footer from './Footer';
 export default function Landing() {
   const [movies, setMovies] = useState([])
   const fetchMovies = async () => {
-      const response = await fetch('http://127.0.0.1:5000/api/movies/display')
+      const response = await fetch('http://127.0.0.1:8000/movies')
       const data = await response.json()
         setMovies(data);
     }

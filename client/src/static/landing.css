@@ -1,8 +1,15 @@
+:root{
+    --primary-color: #22254b;
+    --secondary-color: #373b69;
+    --color: #7378c5;
+    --seatmap: #242333;
+}
+
 .landing {
   text-align: center;
   /*padding: 20px;*/
   margin: 0;
-  background-color: #7378c5;
+  background-color: var(--seatmap);
   box-sizing: border-box;
 }
 
@@ -181,7 +188,7 @@ nav ul li a {
   width: 200px;
   height: 300px;
   border: none;
-  background-color: #22254b;
+  background-color: var(--secondary-color);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   flex-shrink: 0;
 }
