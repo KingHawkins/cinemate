@@ -69,12 +69,7 @@ Your browser does not support the video tag.
   <li>Access the user dashboard to view booking history and manage account information.</li>
   <li>The API Documentation can be accessed at <code>http://127.0.0.1:5000/api/swagger-ui</code></li>
 </ol>
-<h2>Example</h2>
-<img src='dashboard.png' alt='dashboard'>
-<img src='movie.png' alt='movies'>
-<img src='ticket.png' alt='ticket'>
-<img src='cinema.png' alt='cinema'>
-<img src='paypal.png' alt='paypal'>
+
 <h2>Contributing</h2>
 
 <p>Contributions are welcome! If you have any suggestions, bug reports, or feature requests, please open an issue or submit a pull request.</p>
